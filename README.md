@@ -32,3 +32,10 @@ Using another terminal, start the simple HTML client:
 ```shell
 poetry run python -m http.server --directory src/simple-html-client 9000
 ```
+
+
+## Generating demo slides
+
+```shell
+npx @marp-team/marp-cli@latest demo-slides/code-sprint-demo.md --allow-local-files -o sprint-demo.pdf
+```

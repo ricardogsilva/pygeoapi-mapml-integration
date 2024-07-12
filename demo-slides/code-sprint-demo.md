@@ -29,6 +29,9 @@ footer: ''
   - features of type _Point_
   - Image-based tiles
 
+- Resulting code is online at:
+  <https://github.com/ricardogsilva/pygeoapi-mapml-integration>
+
 
 ---
 
