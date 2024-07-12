@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="module" src="node_modules/@maps4html/web-map-custom-element/dist/mapml-viewer.js"></script>
+        <title>Simple MapML client</title>
+        <style>
+            html, body {
+                height: 100%;
+            }
+            mapml-viewer {
+                height: 80%;
+                width: 95%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>MapML simple client</h1>
+        <mapml-viewer projection="OSMTILE" zoom="1" lat="0.0" lon="0.0" controls>
+            <layer- label="OpenStreetMap" checked>
+                <map-extent units="OSMTILE" checked>
+                    <map-input name="z" type="zoom"  value="18" min="0" max="18"></map-input>
+                    <map-input name="x" type="location" units="tilematrix" axis="column" min="0"  max="262144" ></map-input>
+                    <map-input name="y" type="location" units="tilematrix" axis="row" min="0"  max="262144" ></map-input>
+                    <map-link rel="tile" tref="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" ></map-link>
+                </map-extent>
+            </layer->
+            <layer-
+                    label="grid mental from pygeoapi"
+                    src="http://localhost:5000/collections/grid_mental/tiles/WebMercatorQuad"
+                    checked
+            ></layer->
+            <layer-
+                    label="obs from pygeoapi"
+                    src="http://localhost:5000/collections/obs/items"
+                    checked
+            ></layer->
+        </mapml-viewer>
+    </body>
+</html>

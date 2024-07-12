@@ -164,3 +164,8 @@ cython_debug/
 # pygeoapi config/openapi files
 mapml-prototype-config.yml
 mapml-prototype-openapi.yml
+
+# simple html client deps
+src/simple-html-client/node_modules
+
+sprint-demo.pdf

@@ -1,0 +1,14 @@
+{
+  "name": "mapml-simple-client",
+  "version": "0.0.1",
+  "description": "Simple mapml client for testing code sprint work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@maps4html/web-map-custom-element": "^0.13.3"
+  }
+}
