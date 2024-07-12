@@ -1,0 +1,21 @@
+{%- set item_href = (data['links']|selectattr("rel", "equalto", "item")|first)["href"] -%}
+{%- set extent = data['extent'] -%}
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+    <map-head>
+        <map-title>{{ data['title'] }}</map-title>
+        <map-meta http-equiv="Content-Type" content="text/mapml;projection={{ data['tiled_crs'] }}"></map-meta>
+        <map-meta charset="utf-8"></map-meta>
+        {%- if extent %}
+        <map-meta name="extent" content="top-left-easting={{ extent['top-left-easting'] }}, top-left-northing={{ extent['top-left-northing'] }}, bottom-right-easting={{ extent['bottom-right-easting'] }}, bottom-right-northing={{ extent['bottom-right-northing'] }}"></map-meta>
+        {%- endif %}
+        <map-link rel="license" href="" title=""></map-link>
+    </map-head>
+    <map-body>
+        <map-extent units="{{ data['tiled_crs'] }}" checked="checked">
+            <map-input name="tileMatrix" type="zoom" value="0" min="0" max="18"></map-input>
+            <map-input name="tileCol" type="location" units="tilematrix" axis="column"></map-input>
+            <map-input name="tileRow" type="location" units="tilematrix" axis="row"></map-input>
+            <map-link rel="tile" tref="{{ item_href }}"></map-link>
+        </map-extent>
+    </map-body>
+</mapml->

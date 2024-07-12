@@ -1,0 +1,36 @@
+{%- set extent=data['extent'] -%}
+<mapml- xmlns="http://www.w3.org/1999/xhtml">
+    <map-head>
+        <map-title>{{ data['title'] }}</map-title>
+        <map-meta name="projection" content="{{ data['tiled_crs'] }}"></map-meta>
+        <map-meta http-equiv="Content-Type" content="text/mapml;projection={{ data['tiled_crs'] }}"></map-meta>
+        <map-meta charset="utf-8"></map-meta>
+        <map-meta name="cs" content="{{ data['coordinate_system'] }}"></map-meta>
+        {%- if extent %}
+        {#
+        <map-meta name="extent" content="top-left-easting={{ extent['top-left-easting'] }}, top-left-northing={{ extent['top-left-northing'] }}, bottom-right-easting={{ extent['bottom-right-easting'] }}, bottom-right-northing={{ extent['bottom-right-northing'] }}"></map-meta>
+        #}
+        <map-meta name="extent" content="{%- for k,v in data['extent'].items() %}{{ k }}={{ v }}{%if loop.last %}{% else %}, {% endif %}{%- endfor %}"></map-meta>
+        {%- endif %}
+        <map-link rel="license" href="" title=""></map-link>
+    </map-head>
+    <map-body>
+        {%- for feat in data['features'] -%}
+        <map-feature>
+            <map-properties>
+                <table>
+                    <tbody>
+                        {%- for name, value in feat.properties.items() -%}
+                        <tr>
+                            <td>{{ name }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {%- endfor -%}
+                    </tbody>
+                </table>
+            </map-properties>
+            <map-geometry>{{ feat.geometry }}</map-geometry>
+        </map-feature>
+        {%- endfor -%}
+    </map-body>
+</mapml->
